@@ -5,6 +5,7 @@ import static testingui.diplomadoumss.org.manageevents.Event.*;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import testingui.diplomadoumss.org.managepage.BasePage;
+import testingui.diplomadoumss.org.managepage.TravelHopeFlights.Flights;
 
 /**
  * @author Marcelo Garay
@@ -15,7 +16,7 @@ public class Dashboard extends BasePage {
     @FindBy(xpath = "//ul[@id='social-sidebar-menu']//a[contains(text(), 'Bookings')]")
     private WebElement bookingLink;
 
-    @FindBy(xpath = "//ul[@id='social-sidebar-menu']//a[contains(., 'General') and @aria-expanded='false']")
+    @FindBy(xpath = "//ul[@id='social-sidebar-menu']//a[contains(., 'general') and @aria-expanded='false']")
     private WebElement generalExpand;
 
     @FindBy(xpath = "//a[text()='Currencies']")
@@ -37,18 +38,22 @@ public class Dashboard extends BasePage {
         return this;
     }
 
-    public Dashboard clickCurrenciesOption(){
+    public Dashboard clickCurrenciesOption() {
         clickWebElement(currenciesOption);
         return this;
     }
 
-    public Dashboard clickFligthsExpand(){
+    public Dashboard clickFligthsExpand() {
         clickWebElement(fligthsExpand);
         return this;
     }
 
-    public Dashboard clickAirportsOption(){
+    public Dashboard clickAirportsOption() {
         clickWebElement(airportsOption);
         return this;
+    }
+
+    public Flights inizializeFlights() {
+        return new Flights();
     }
 }
