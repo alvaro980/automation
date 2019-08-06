@@ -8,12 +8,9 @@ import org.testng.Assert;
 import testingui.diplomadoumss.org.manageloadpage.LoadPage;
 import testingui.diplomadoumss.org.managepage.TravelHopeFlights.Flights;
 import testingui.diplomadoumss.org.managepage.airports.Airports;
-import testingui.diplomadoumss.org.managepage.currencies.Currencies;
 import testingui.diplomadoumss.org.managepage.dashboard.Dashboard;
 import testingui.diplomadoumss.org.managepage.general.General;
-import testingui.diplomadoumss.org.managepage.header.Header;
 import testingui.diplomadoumss.org.managepage.login.Login;
-import testingui.diplomadoumss.org.managepage.nasa.Nasa;
 
 import static testingui.diplomadoumss.org.manageevents.Event.avoidToUse;
 
@@ -24,10 +21,7 @@ import static testingui.diplomadoumss.org.manageevents.Event.avoidToUse;
 public class LoginStepdefs {
     private Login login;
     private Dashboard dashboard;
-    private Header header = new Header();
-    private Currencies currencies = new Currencies();
     private Airports airports = new Airports();
-    private Nasa nasa;
     private Flights flights;
     private General general;
 
@@ -63,11 +57,6 @@ public class LoginStepdefs {
         Assert.assertEquals(loginLabelButtonCurrent, loginLabelButton, "Login page is verifying the 'LOGIN' label button.");
     }
 
-    @And("^click 'Logout' button on 'Header' page$")
-    public void clickLogoutButtonOnHeaderPage() throws Throwable {
-        header.logoutLink();
-    }
-
     @Then("^verify the \"([^\"]*)\" option li is displayed on 'Left Panel' page$")
     public void verifyTheOptionLiIsDisplayedOnLeftPanelPage(String currenciesLinkName) throws Throwable {
         String optionLiCurrencies = login.getCurrenciesLiOption();
@@ -77,26 +66,6 @@ public class LoginStepdefs {
     @And("^click 'Currencies' link belows 'General' options$")
     public void clickCurrenciesLinkBelowsGeneralOptions() throws Throwable {
         dashboard.clickCurrenciesOption();
-    }
-
-    @Then("^verify standard currencies are present in column Name$")
-    public void verifyStandardCurrenciesArePresentInColumnName() throws Throwable {
-        try {
-            Boolean arePresentCurrencies = currencies.arePresentStandardCurrencies();
-            Assert.assertEquals(arePresentCurrencies, Boolean.TRUE);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @And("^click 'Add' button$")
-    public void clickAddButton() throws Throwable {
-        currencies.clickAddCurrencyButton();
-    }
-
-    @And("^set my currency data$")
-    public void setMyCurrencyData() throws Throwable {
-        currencies.fillDataNewCurrency();
     }
 
     @And("^click 'Flights' link on 'Left Panel' page$")
@@ -120,149 +89,4 @@ public class LoginStepdefs {
         Assert.assertEquals(arePresentAirports, Boolean.TRUE);
     }
 
-    @Given("^I load NASA page$")
-    public void iLoadNASAPage() throws Throwable {
-        nasa = LoadPage.loadNasaPage();
-    }
-
-    @And("^Click NASA API Listing link$")
-    public void clickNASAAPIListingLink() throws Throwable {
-        nasa.clickNasaApiListingLink();
-    }
-
-    @And("^Click NASA API Listing second time$")
-    public void clickNASAAPIListingSecondTime() throws Throwable {
-        nasa.clickNasaApiListingLink();
-    }
-
-    @And("^Click Earth left panel$")
-    public void clickEarthLeftPanel() throws Throwable {
-        nasa.clickEarthLinkOption();
-    }
-
-    @And("^Click Imagery sub menu option$")
-    public void clickImagerySubMenuOption() throws Throwable {
-        nasa.clickImageryOption();
-    }
-
-    @Then("^Validate get information in the page$")
-    public void validateGetInformationInThePage() throws Throwable {
-        String getTextOnPage = nasa.getTextInformation();
-        Assert.assertEquals(getTextOnPage, "GET https://api.nasa.gov/planetary/earth/imagery", "GET text validating");
-    }
-
-    @And("^click \"([^\"]*)\" link$")
-    public void clickLink(String value) throws Throwable {
-        login = LoadPage.loadPPHPTravels();
-        dashboard = login.setCredentials();
-        flights = dashboard.inizializeFlights();
-        flights.clickTravelHopeHotels();
-
-    }
-
-    @And("^click TravelHope Flights > Settings link$")
-    public void clickTravelHopeFlightsSettingsLink() {
-        avoidToUse(2);
-        flights.clickTravelHopeHotelsSettings();
-    }
-
-    @And("^fill the input API Endpoint with \"([^\"]*)\"$")
-    public void fillTheInputAPIEndpointWith(String value) throws Throwable {
-        flights.fillApiEnpointInput(value);
-    }
-
-    @And("^fill the input OTA ID with \"([^\"]*)\"$")
-    public void fillTheInputOTAIDWith(String value) throws Throwable {
-        flights.fillOtaidInput(value);
-    }
-
-    @And("^select the option \"([^\"]*)\" in API Environment$")
-    public void selectTheOptionInAPIEnvironment(String value) throws Throwable {
-        flights.selectExpansionSelector(value);
-    }
-
-    @Then("^click in the bottom submit$")
-    public void clickInTheBottomSubmit() {
-        flights.clickButtomSubmit();
-    }
-
-    @And("^click 'General' link$")
-    public void clickGeneralLink() {
-
-    }
-
-    @And("^click TravelHope General > Settings link$")
-    public void clickTravelHopeGeneralSettingsLink() {
-
-    }
-
-    @And("^load png image into 'Business Logo' from \"([^\"]*)\"$")
-    public void loadPngImageIntoBusinessLogoFrom(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @And("^load png image into 'Favicon' from \"([^\"]*)\"$")
-    public void loadPngImageIntoFaviconFrom(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @And("^fill the input 'Business Name' with \"([^\"]*)\"$")
-    public void fillTheInputBusinessNameWith(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @And("^fill the input 'Site URL' with \"([^\"]*)\"$")
-    public void fillTheInputSiteURLWith(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @And("^fill the input 'License Key' with \"([^\"]*)\"$")
-    public void fillTheInputLicenseKeyWith(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @And("^fill the input 'Copyrights' with \"([^\"]*)\"$")
-    public void fillTheInputCopyrightsWith(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @And("^fill the input 'Home Title' with \"([^\"]*)\"$")
-    public void fillTheInputHomeTitleWith(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @And("^fill the input 'Default Keywords' with \"([^\"]*)\"$")
-    public void fillTheInputDefaultKeywordsWith(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @And("^fill the input 'Default Description' with \"([^\"]*)\"$")
-    public void fillTheInputDefaultDescriptionWith(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @And("^fill the input 'Google Map API' with \"([^\"]*)\"$")
-    public void fillTheInputGoogleMapAPIWith(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @And("^fill the input 'Tracking & Analytics' with \"([^\"]*)\"$")
-    public void fillTheInputTrackingAnalyticsWith(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @Then("^click in the buttom submit$")
-    public void clickInTheButtomSubmit() {
-    }
 }

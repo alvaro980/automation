@@ -1,4 +1,5 @@
 Feature: Validate "TRAVELHOPE FLIGHTS link
+
   Scenario: update travelhope flights settings
     And click "TravelHope Flights" link
     And click TravelHope Flights > Settings link

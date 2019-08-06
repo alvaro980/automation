@@ -1,9 +1,8 @@
 Feature: Validate "General" link
+
   Scenario: update web site
     And click 'General' link
     And click TravelHope General > Settings link
-    And load png image into 'Business Logo' from "C:\\newhtml.html"
-    And load png image into 'Favicon' from "C:\\newhtml.html"
     And fill the input 'Business Name' with "PHPTRAVELS"
     And fill the input 'Site URL' with "https://www.phptravels.net"
     And fill the input 'License Key' with "license"

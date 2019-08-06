@@ -53,7 +53,7 @@ public class General extends BasePage {
     private WebElement buttomSubmit;
 
     public General() {
-        avoidToUse(2);
+            avoidToUse(2);
     }
 
     public General fillBussinessName(String value) {
