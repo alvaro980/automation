@@ -4,9 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import testingui.diplomadoumss.org.managepage.BasePage;
 
-import static testingui.diplomadoumss.org.manageevents.Event.avoidToUse;
-import static testingui.diplomadoumss.org.manageevents.Event.clickWebElement;
-import static testingui.diplomadoumss.org.manageevents.Event.fillWebElement;
+import static testingui.diplomadoumss.org.manageevents.Event.*;
 
 public class Watermark extends BasePage {
 
@@ -22,5 +20,26 @@ public class Watermark extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn-primary']")
     private WebElement buttomSubmit;
 
+    public Watermark() {
+        avoidToUse(2);
+    }
+
+    public void getWatermarkExpand() {
+        clickWebElement(watermarkExpansion);
+    }
+
+    public Watermark selectEnableOption(String value) {
+        selectWebElementSelector(selectorEnable, value);
+        return this;
+    }
+
+    public Watermark selectPosition(String value) {
+        selectWebElementSelector(selectorPosition, value);
+        return this;
+    }
+
+    public void clickSubmitButtom() {
+        clickWebElement(buttomSubmit);
+    }
 
 }

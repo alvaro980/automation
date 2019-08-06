@@ -5,12 +5,14 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import testingui.diplomadoumss.org.manageloadpage.LoadPage;
+import testingui.diplomadoumss.org.managepage.Themes.Themes;
 import testingui.diplomadoumss.org.managepage.dashboard.Dashboard;
 import testingui.diplomadoumss.org.managepage.login.Login;
 
 public class themesStepdefs {
     private Login login;
     private Dashboard dashboard;
+    private Themes themes;
 
     @Given("^I load PHP travels$")
     public void iLoadPHPTravels() throws Throwable {
@@ -22,33 +24,21 @@ public class themesStepdefs {
         dashboard = login.setCredentials();
     }
 
-    @And("^click 'General' link on 'Left Panel' page$")
-    public void clickGeneralLinkOnLeftPanelPage() throws Throwable {
-        dashboard.clickGeneralExpand();
-    }
-
-    @And("^fill \"([^\"]*)\" email field on 'Login' page$")
-    public void fillEmailFieldOnLoginPage(String email) throws Throwable {
-        login.setEmail(email);
-    }
-
-    @And("^fill \"([^\"]*)\" password field on 'Login' page$")
-    public void fillPasswordFieldOnLoginPage(String password) throws Throwable {
-        login.setPassword(password);
-    }
-
     @And("^click 'theme' link$")
     public void clickThemeLink() {
+        dashboard.clickGeneralExpand();
+        themes = dashboard.initializeThemes();
+        themes.getThemesExpand();
 
     }
 
     @And("^select \"([^\"]*)\" on theme option$")
-    public void selectOnThemeOption(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void selectOnThemeOption(String theme) throws Throwable {
+        themes.selectThemes(theme);
     }
 
     @Then("^click in the bottom submit on theme tab$")
     public void clickInTheBottomSubmitOnThemeTab() {
+        themes.clickButtomSubmit();
     }
 }

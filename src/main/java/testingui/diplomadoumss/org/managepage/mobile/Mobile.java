@@ -1,5 +1,6 @@
 package testingui.diplomadoumss.org.managepage.mobile;
 
+import com.sun.org.apache.bcel.internal.generic.MONITORENTER;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import testingui.diplomadoumss.org.managepage.BasePage;
@@ -32,6 +33,11 @@ public class Mobile extends BasePage {
 
     public Mobile fillInputAPIKEY(String value) {
         fillWebElement(inputAPIKEY, value);
+        return this;
+    }
+
+    public Mobile fillSection(String value) {
+        fillWebElement(inputURL, value);
         return this;
     }
 

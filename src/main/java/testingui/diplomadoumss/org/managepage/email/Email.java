@@ -40,6 +40,11 @@ public class Email extends BasePage {
         return this;
     }
 
+    public Email fillTextReceiverInput(String value) {
+        fillWebElement(testEmailReceiverInput, value);
+        return this;
+    }
+
     public Email fillEmailInput(String value) {
         fillWebElement(emailInput, value);
         return this;
