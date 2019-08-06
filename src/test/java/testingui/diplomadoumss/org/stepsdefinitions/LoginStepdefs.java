@@ -22,8 +22,6 @@ public class LoginStepdefs {
     private Login login;
     private Dashboard dashboard;
     private Airports airports = new Airports();
-    private Flights flights;
-    private General general;
 
     @Given("^I load PHP travels$")
     public void iLoadPHPTravels() throws Throwable {

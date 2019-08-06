@@ -22,7 +22,7 @@ public class General extends BasePage {
     @FindBy(xpath = "//input[@id='favimage' and @class='btn btn-default' and @name='favimg']")
     private WebElement inputFaviconLogo;
 
-    @FindBy(xpath = "//input[@type='text' and @name='site_title']") // from here
+    @FindBy(xpath = "//input[@type='text' and @name='site_title']")
     private WebElement inputBussinessName;
 
     @FindBy(xpath = "//input[@type='text' and @name='site_url']")
@@ -54,6 +54,10 @@ public class General extends BasePage {
 
     public General() {
             avoidToUse(2);
+    }
+
+    public void clickOnSettings(){
+        clickWebElement(generalSettingsExpansion);
     }
 
     public General fillBussinessName(String value) {
@@ -101,7 +105,7 @@ public class General extends BasePage {
         return this;
     }
 
-    public void clickButtomSubmit() {
+    public void clickBottomSubmit() {
         clickWebElement(buttomSubmit);
     }
 }

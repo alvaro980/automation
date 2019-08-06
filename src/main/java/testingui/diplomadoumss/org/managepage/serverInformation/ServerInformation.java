@@ -14,7 +14,7 @@ public class ServerInformation extends BasePage {
     private WebElement textServerOs;
 
     @FindBy(xpath = "//div[@id='SERVER']//a/strong[contains(text(), ' Browser ')]")
-    private WebElement textBroser;
+    private WebElement textBrowser;
 
     @FindBy(xpath = "//div[@id='SERVER']//a/strong[contains(text(), ' PHP Version ')]")
     private WebElement textPhpVersion;
@@ -25,11 +25,32 @@ public class ServerInformation extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn-primary']")
     private WebElement buttomSubmit;
 
-    public ServerInformation(){
+    public ServerInformation() {
         avoidToUse(2);
     }
-    public void clickOnServerInformationExpansion(){
+
+    public void clickOnServerInformationExpansion() {
         clickWebElement(serverInformationExpansion);
     }
-    
+
+    public String verifyTextServerOs() {
+        return getWebElementText(textServerOs);
+    }
+
+    public String verifyTextBrowser() {
+        return getWebElementText(textBrowser);
+    }
+
+    public String verifyTextPhpVersion() {
+        return getWebElementText(textPhpVersion);
+    }
+
+    public String verifyTextMysql() {
+        return getWebElementText(textMysql);
+    }
+
+    public void clickButtomSubmit() {
+        clickWebElement(buttomSubmit);
+    }
+
 }

@@ -30,12 +30,12 @@ public class Contact extends BasePage {
         avoidToUse(2);
     }
 
-    public Contact fillContactExpand() {
+    public Contact clickContactExpand() {
         clickWebElement(çontactExpand);
         return this;
     }
 
-    public Contact fillContactInput(String value) {
+    public Contact fillPhoneNumberInput(String value) {
         fillWebElement(contactInput, value);
         return this;
 
